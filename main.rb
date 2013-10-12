@@ -22,11 +22,16 @@ def run
       uri = URI(item.link)
       essay = Net::HTTP.get(uri)
       line_count = 0
-      essay.each { |line| line_count += 1 }
+      word_count = 0
+      essay.each do  |line|
+        word_count += line.split.length
+        line_count += 1
+      end
       puts "Count of lines #{line_count}"
-
+      puts "Count of words #{word_count}"
       puts "------------------"
     end
+    puts "Count of essays #{feed.items.length}"
   end
 
 end
