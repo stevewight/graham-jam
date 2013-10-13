@@ -1,18 +1,18 @@
 require 'open-uri'
 require 'rss'
-require 'essay'
+require './essay.rb'
 
 class Essays
-  URI = URI('http://www.aaronsw.com/2002/feeds/pgessays.rss')
-  attr_accessor :list
 
   def initialize()
     @list = []
+    puts 'essays obj init'
     load_essays()
   end
 
   def load_essays()
-    open(URI) do |rss|
+    uri = 'http://www.aaronsw.com/2002/feeds/pgessays.rss'
+    open(uri) do |rss|
       feed = RSS::Parser.parse(rss)
       list_with_feed(feed)
     end
@@ -21,9 +21,10 @@ class Essays
   def list_with_feed(feed)
     feed.items.each do |item|
       essay = Essay.new(item)
-      puts '--------------------'
       @list.push(essay)
+      puts "item: #{item.title}"
+      puts "link: #{item.link}"
     end
-  end  
+  end
 
 end

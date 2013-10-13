@@ -1,19 +1,14 @@
+require 'nokogiri'
+
 class Cleaner
-  
-  def initialize(item)
-    @item = item
+
+  def initialize(raw)
+    @raw = raw
   end
 
-  def clean()
-    @item = 
-  end
-
-  def remove_html(item)
-
-  end
-
-  def words()
-
+  def remove_html
+    html_doc = Nokogiri::HTML(@raw)
+    puts '~~~~~~~~~~~~~~~~~~~~~~~'
   end
 
 end
