@@ -15,7 +15,6 @@ def run
     feed = RSS::Parser.parse(rss)
     puts "Title: #{feed.channel.title}"
     feed.items.each do |item|
-      puts "-------------------"
       puts "Item: #{item.title}"
       puts "Link: #{item.link}"
 

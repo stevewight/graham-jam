@@ -4,10 +4,10 @@ require 'essay'
 
 class Essays
   URI = URI('http://www.aaronsw.com/2002/feeds/pgessays.rss')
-  attr_accessor :items
+  attr_accessor :list
 
   def initialize()
-    @items = []
+    @list = []
     load_essays()
   end
 
@@ -20,7 +20,9 @@ class Essays
 
   def list_with_feed(feed)
     feed.items.each do |item|
-      @items[] = Essay.new(item)
+      essay = Essay.new(item)
+      puts '--------------------'
+      @list.push(essay)
     end
   end  
 
