@@ -8,16 +8,12 @@ class Cleaner
 
   def remove_html
     html_doc = Nokogiri::HTML(@raw)
-    #para = html_doc.css('p')
-    clean_text = html_doc.xpath("//text()").to_s
-    puts clean_text
-    puts '~~~~~~~~~~~~~~~~~~~~~~~'
+    @clean = html_doc.xpath("//text()").to_s
   end
 
   def find_core_element
     html = Nokogiri::HTML(@raw)
-    elements = html.css('p')
-    puts "<p> Count: #{elements.length}"
+    @elements = html.css('p')
   end
 
 end

@@ -2,28 +2,21 @@ require 'open-uri'
 require './cleaner.rb'
 
 class Essay
-
+  attr_accessor :title, :link  
+ 
   def initialize(item)
     @title = item.title
     @link = item.link
     puts 'initialized essay'
-    loadRaw()
   end
   
-  def loadRaw()
+  def load_raw()
     uri = URI(@link)
     begin
-      raw = open(uri)
+      @raw = open(uri)
     rescue
-      raw = 'nothing good'
+      @raw = 'nothing good'
     end
-    clean(raw)
-  end
-
-  def clean(raw)
-    cleaner = Cleaner.new(raw)
-    #cleaner.remove_html
-    cleaner.find_core_element
   end
 
 end

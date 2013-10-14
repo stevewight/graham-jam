@@ -3,6 +3,7 @@ require 'rss'
 require './essay.rb'
 
 class Essays
+  attr_accessor :list
 
   def initialize()
     @list = []
