@@ -12,14 +12,18 @@ class Essay
   
   def loadRaw()
     uri = URI(@link)
-    raw = open(uri)
-    puts raw
+    begin
+      raw = open(uri)
+    rescue
+      raw = 'nothing good'
+    end
     clean(raw)
   end
 
   def clean(raw)
     cleaner = Cleaner.new(raw)
-    cleaner.remove_html
+    #cleaner.remove_html
+    cleaner.find_core_element
   end
 
 end
